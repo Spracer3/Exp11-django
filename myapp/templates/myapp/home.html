@@ -1,0 +1,24 @@
+<!-- myapp/templates/myapp/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Book List</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }}</li>
+        {% empty %}
+            <li>No books available.</li>
+        {% endfor %}
+    </ul>
+    <h2>Add a new book</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Book</button>
+    </form>
+
+</body>
+</html>
